@@ -13,6 +13,8 @@ Future showMyDialogue(BuildContext context) {
     context: context,
     builder: (context) {
       return AlertDialog(
+        backgroundColor: Theme.of(context).dialogBackgroundColor,
+
         title: Text(
 
           "Add the Document",
@@ -27,6 +29,7 @@ Future showMyDialogue(BuildContext context) {
                 controller: titleController,
                 decoration: InputDecoration(
                   hintText: "Add the Title",
+
                   border: OutlineInputBorder(),
                   enabledBorder: OutlineInputBorder(
                     borderSide: BorderSide(color: Colors.black),

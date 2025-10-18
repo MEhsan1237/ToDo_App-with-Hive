@@ -15,9 +15,10 @@ Future updateMyDialogue(BuildContext context,NotesModel notesModel , String titl
     context: context,
     builder: ( BuildContext context) {
       return AlertDialog(
+        backgroundColor: Theme.of(context).dialogBackgroundColor,
         title: Text(
 
-          "Add the Document",
+          "Update the Document",
           style: TextStyle(color: Colors.black, fontSize: 20),
         ),
         content: Column(  mainAxisSize: MainAxisSize.min,
