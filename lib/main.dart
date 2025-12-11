@@ -18,6 +18,7 @@ void main() async {
   Hive.init(directory.path);
   Hive.registerAdapter(NotesModelAdapter());
   await Hive.openBox<NotesModel>("notes");
+  await Hive.openBox('settings');
 
 
   runApp(ChangeNotifierProvider(

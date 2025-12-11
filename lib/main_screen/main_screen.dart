@@ -47,6 +47,7 @@ class _MyAppHiveState extends State<MyAppHive> {
             ),
             onPressed: () {
               themeProvider.toggleTheme(!themeProvider.isDarkMode);
+
             },
           ),
         ],
