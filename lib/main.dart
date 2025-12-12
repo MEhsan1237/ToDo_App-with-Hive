@@ -35,7 +35,7 @@ class MyApp extends StatelessWidget {
     final themeProvider = Provider.of<ThemeProvider>(context);
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'ToDo App',
+      title: 'Todo App',
       themeMode: themeProvider.themeMode,
       theme: ThemeData(
         brightness: Brightness.light,
@@ -54,15 +54,19 @@ class MyApp extends StatelessWidget {
           scaffoldBackgroundColor: Colors.black,
           inputDecorationTheme: InputDecorationTheme(
             hintStyle: TextStyle(color: Colors.black),
+
+
           ),
           iconTheme: IconThemeData(
             color: Colors.black
           ),
           dialogBackgroundColor: Colors.white,
           textTheme: TextTheme(
-            bodyLarge: TextStyle(
-              color: Colors.black,
+            bodySmall: TextStyle(
+              color: Colors.black
             ),
+
+
             bodyMedium: TextStyle(
               color: Colors.black,
             ),

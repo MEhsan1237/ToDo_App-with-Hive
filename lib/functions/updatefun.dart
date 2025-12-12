@@ -3,12 +3,14 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:hive_project/provider/provider_class.dart';
 
 import '../notes_model/notes_model.dart';
 
 Future updateMyDialogue(BuildContext context,NotesModel notesModel , String title , String description,) {
   final titleController = TextEditingController();
   final descriptionController = TextEditingController();
+  ThemeProvider themeProvider = ThemeProvider();
   titleController.text = title;
   descriptionController.text= description;
   return showDialog(
@@ -26,6 +28,9 @@ Future updateMyDialogue(BuildContext context,NotesModel notesModel , String titl
             Padding(
               padding: const EdgeInsets.only(right: 4.0),
               child: TextFormField(
+                style: TextStyle(
+                    color: themeProvider.isDarkMode? Colors.black: Colors.black
+                ),
                 controller: titleController,
                 decoration: InputDecoration(
                   hintText: "Add the Title",
@@ -45,6 +50,9 @@ Future updateMyDialogue(BuildContext context,NotesModel notesModel , String titl
             Padding(
               padding: const EdgeInsets.only(right: 4.0),
               child: TextFormField(
+                style: TextStyle(
+                    color: themeProvider.isDarkMode? Colors.black: Colors.black
+                ),
                 maxLines: 2,
                 controller: descriptionController,
                 decoration: InputDecoration(

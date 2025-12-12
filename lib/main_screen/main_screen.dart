@@ -28,7 +28,7 @@ class _MyAppHiveState extends State<MyAppHive> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "ToDo App",
+          "Todo App",
           style: TextStyle(
             color: Colors.white,
             fontSize: 26,

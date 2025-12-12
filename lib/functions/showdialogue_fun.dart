@@ -2,18 +2,23 @@
 
 
 import 'package:flutter/material.dart';
+import 'package:hive_project/provider/provider_class.dart';
 import '../main_screen/boxes_file.dart';
 import '../notes_model/notes_model.dart';
 
 Future showMyDialogue(BuildContext context) {
   final titleController = TextEditingController();
   final descriptionController = TextEditingController();
+  ThemeProvider themeProvider = ThemeProvider();
 
   return showDialog(
     context: context,
     builder: (context) {
       return AlertDialog(
+
+
         backgroundColor: Theme.of(context).dialogBackgroundColor,
+
 
         title: Text(
 
@@ -26,9 +31,13 @@ Future showMyDialogue(BuildContext context) {
             Padding(
               padding: const EdgeInsets.only(right: 4.0),
               child: TextFormField(
+                style: TextStyle(
+                  color: themeProvider.isDarkMode? Colors.black: Colors.black
+                ),
                 controller: titleController,
                 decoration: InputDecoration(
                   hintText: "Add the Title",
+
 
                   border: OutlineInputBorder(),
                   enabledBorder: OutlineInputBorder(
@@ -46,9 +55,13 @@ Future showMyDialogue(BuildContext context) {
             Padding(
               padding: const EdgeInsets.only(right: 4.0),
               child: TextFormField(
+                style: TextStyle(
+                    color: themeProvider.isDarkMode? Colors.black: Colors.black
+                ),
                 maxLines: 2,
                 controller: descriptionController,
                 decoration: InputDecoration(
+
                   hintText: "Add the Description",
                   border: OutlineInputBorder(),
                   enabledBorder: OutlineInputBorder(
