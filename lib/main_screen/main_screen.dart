@@ -8,6 +8,7 @@ import '../functions/deletefun.dart';
 import '../functions/showdialogue_fun.dart';
 import '../functions/updatefun.dart';
 import '../provider/provider_class.dart';
+import '../utils/toast_message.dart';
 
 class MyAppHive extends StatefulWidget {
   const MyAppHive({super.key});
@@ -41,13 +42,13 @@ class _MyAppHiveState extends State<MyAppHive> {
           IconButton(
             icon: Icon(
               themeProvider.isDarkMode
-                  ? Icons.dark_mode // 🌙 Dark mode icon
+                  ? Icons
+                        .dark_mode // 🌙 Dark mode icon
                   : Icons.light_mode, // ☀️ Light mode icon
               color: themeProvider.isDarkMode ? Colors.white : Colors.white,
             ),
             onPressed: () {
               themeProvider.toggleTheme(!themeProvider.isDarkMode);
-
             },
           ),
         ],
@@ -73,8 +74,7 @@ class _MyAppHiveState extends State<MyAppHive> {
                 ),
                 prefixIcon: Icon(Icons.search),
                 hintStyle: TextStyle(
-                  color:
-                  themeProvider.isDarkMode ? Colors.white : Colors.black,
+                  color: themeProvider.isDarkMode ? Colors.white : Colors.black,
                 ),
               ),
               onChanged: (value) {
@@ -111,11 +111,11 @@ class _MyAppHiveState extends State<MyAppHive> {
                 var filteredData = searchText.isEmpty
                     ? data
                     : data.where((note) {
-                  final title = note.title.toLowerCase();
-                  final desc = note.description.toLowerCase();
-                  return title.contains(searchText) ||
-                      desc.contains(searchText);
-                }).toList();
+                        final title = note.title.toLowerCase();
+                        final desc = note.description.toLowerCase();
+                        return title.contains(searchText) ||
+                            desc.contains(searchText);
+                      }).toList();
 
                 // Agar search hua aur match nahi mila
                 if (filteredData.isEmpty && searchText.isNotEmpty) {
@@ -165,7 +165,46 @@ class _MyAppHiveState extends State<MyAppHive> {
                                     Spacer(),
                                     InkWell(
                                       onTap: () {
-                                        delete(note);
+                                        showDialog(
+
+                                          
+                                          builder: (context) => 
+                                          AlertDialog(
+                                            backgroundColor: Colors.white,
+                                            title: Text("Do you want to delete",style: TextStyle(color: Colors.black),),
+                                          
+                                          
+                                              content:  Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                                children: [
+                                                  ElevatedButton(
+                                                    style: ElevatedButton.styleFrom(
+                                                        backgroundColor: Colors.black,
+                                                        foregroundColor: Colors.white
+                                                    ),
+                                                    onPressed: () {
+                                                      Navigator.pop(context);
+                                                    },
+                                                    child: Text("Cancel"),
+                                                  ),
+                                                  ElevatedButton(
+                                          
+                                                    onPressed: () {
+                                                        delete(note);
+                                                        ToastMessage().message("Delete successfully");
+                                                        Navigator.pop(context);
+                                                    },
+                                                    style: ElevatedButton.styleFrom(
+                                                        backgroundColor: Colors.black,
+                                                        foregroundColor: Colors.white
+                                                    ),
+                                                    child: Text("delete"),
+                                                  ),
+                                                ],
+                                              ),
+                                          
+                                          ), context: context,
+                                        );
+
                                       },
                                       child: Icon(Icons.delete),
                                     ),

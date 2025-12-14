@@ -1,11 +1,11 @@
 
 
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hive_project/provider/provider_class.dart';
 
 import '../notes_model/notes_model.dart';
+import '../utils/toast_message.dart';
 
 Future updateMyDialogue(BuildContext context,NotesModel notesModel , String title , String description,) {
   final titleController = TextEditingController();
@@ -18,10 +18,12 @@ Future updateMyDialogue(BuildContext context,NotesModel notesModel , String titl
     builder: ( BuildContext context) {
       return AlertDialog(
         backgroundColor: Theme.of(context).dialogBackgroundColor,
-        title: Text(
+        title: Center(
+          child: Text(
 
-          "Update the Document",
-          style: TextStyle(color: Colors.black, fontSize: 20),
+            "Update the Document",
+            style: TextStyle(color: Colors.black, fontSize: 20),
+          ),
         ),
         content: Column(  mainAxisSize: MainAxisSize.min,
           children: [
@@ -98,6 +100,7 @@ Future updateMyDialogue(BuildContext context,NotesModel notesModel , String titl
                   descriptionController.clear();
                   titleController.clear();
                   Navigator.pop(context);
+                  ToastMessage().message("Update successfully");
 
                 },
                 child: Center(child: Text("Add")),
@@ -110,4 +113,3 @@ Future updateMyDialogue(BuildContext context,NotesModel notesModel , String titl
     },
   );
 }
-

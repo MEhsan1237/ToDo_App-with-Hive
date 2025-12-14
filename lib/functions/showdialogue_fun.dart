@@ -3,8 +3,11 @@
 
 import 'package:flutter/material.dart';
 import 'package:hive_project/provider/provider_class.dart';
+import 'package:hive_project/utils/toast_message.dart';
 import '../main_screen/boxes_file.dart';
 import '../notes_model/notes_model.dart';
+
+
 
 Future showMyDialogue(BuildContext context) {
   final titleController = TextEditingController();
@@ -20,10 +23,12 @@ Future showMyDialogue(BuildContext context) {
         backgroundColor: Theme.of(context).dialogBackgroundColor,
 
 
-        title: Text(
+        title: Center(
+          child: Text(
 
-          "Add the Document",
-          style: TextStyle(color: Colors.black, fontSize: 20),
+            "Add the Document",
+            style: TextStyle(color: Colors.black),
+          ),
         ),
         content: Column(
           mainAxisSize: MainAxisSize.min,
@@ -51,7 +56,7 @@ Future showMyDialogue(BuildContext context) {
                 ),
               ),
             ),
-            SizedBox(height: 6),
+            SizedBox(height: 8),
             Padding(
               padding: const EdgeInsets.only(right: 4.0),
               child: TextFormField(
@@ -108,6 +113,7 @@ Future showMyDialogue(BuildContext context) {
                   titleController.clear();
                   descriptionController.clear();
                   Navigator.pop(context);
+                  ToastMessage().message("Added successfully");
                 },
                 child: Center(child: Text("Add")),
               ),
@@ -119,17 +125,3 @@ Future showMyDialogue(BuildContext context) {
     },
   );
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
